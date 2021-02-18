@@ -1,0 +1,48 @@
+<html>
+
+<head><title>FIREBASE TEST</title></head>
+
+<body>
+
+[10:13 AM] Revanthkrishnakumar Vivekanandan
+    
+
+<script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-app.js"></script> 
+<script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-messaging.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  var firebaseConfig = {
+    apiKey: "AIzaSyCim-fnS1CJ5clAJw3wtaq_ioPgwvb_Z0Q",
+    authDomain: "nt-erun.firebaseapp.com",
+    projectId: "nt-erun",
+    storageBucket: "nt-erun.appspot.com",
+    messagingSenderId: "508272007166",
+    appId: "1:508272007166:web:c91c64e2afe915da6052af",
+    measurementId: "G-LCC0XVFTMX"
+  };
+  firebase.initializeApp(firebaseConfig);
+
+  const messaging = firebase.messaging();
+  messaging.getToken({ vapidKey: 'BJghNiMFOoYuGnQYkBoO9H1hH4MTnbHZpWaY6Gw8ijo9pLqVbGXPwWloTfR1kseO91C-UOb4FB4NdOXpcR4oShs' }).then((currentToken) => {
+    if (currentToken) {
+      console.log(currentToken);
+    } else {
+      // Show permission request UI
+      console.log('No registration token available. Request permission to generate one.');
+      // ...
+    }
+  }).catch((err) => {
+    console.log('An error occurred while retrieving token. ', err);
+    // ...
+  });
+  messaging.onMessage((payload) => {
+  console.log('Message received. ', payload);
+  // ...
+  });
+</script>
+
+</body>
+
+</html>
